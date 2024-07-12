@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -62,18 +61,16 @@ private fun <T : Any> MyNavItem(navController: NavHostController, route: T) {
     }) {
         Text("Navigate ${route::class.simpleName!!} (no options) ")
     }
-
     Button(onClick = {
         navController.navigate(
             route = route,
             navOptions =  navOptions {
                 popUpTo<A>{ saveState = true }
-                launchSingleTop = true
                 restoreState = true
             }
         )
     }) {
-        Text("Navigate ${route::class.simpleName!!} (popUpTo<A>, withSingleTop) ")
+        Text("Navigate ${route::class.simpleName!!} (popUpTo<A>, saveState) ")
     }
 }
 
